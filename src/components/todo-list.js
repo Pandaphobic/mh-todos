@@ -16,9 +16,11 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     margin: theme.spacing(4, 0, 2),
+    fontFamily: "Rajdhani",
+    fontWeight: 600,
   },
-  Typography: {
-    fontFamily: ["Rajdhani"],
+  listItemText: {
+    fontFamily: "Rajdhani",
   },
 }));
 
@@ -47,7 +49,14 @@ export default function TodoList() {
               <ListItemIcon>
                 <FolderIcon />
               </ListItemIcon>
-              <ListItemText primary="Title Text" secondary={"Body Text"} />
+              <ListItemText
+                classes={
+                  ({ primary: classes.listItemText },
+                  { secondary: classes.listItemText })
+                }
+                primary="Title Text"
+                secondary="Body Text"
+              />
             </ListItem>
           )}
         </List>
