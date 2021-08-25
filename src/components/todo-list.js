@@ -5,6 +5,7 @@ import RadioButtonUnchecked from "@material-ui/icons/RadioButtonUnchecked";
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import logo from "../assets/logo.svg";
+import SimpleDialogDemo from "./modal";
 import {
   Container,
   List,
@@ -67,14 +68,12 @@ export default function TodoList() {
 
         <Grid align="left" item xs={3}>
           <Typography variant="h6" className={classes.title}>
-            <IconButton justify="center" aria-label="delete">
-              <AddIcon />
-            </IconButton>
+            <SimpleDialogDemo />
           </Typography>
         </Grid>
       </Grid>
 
-      <div className={classes.demo}>
+      <div>
         <List>
           <ListItem>
             <ListItemIcon>
