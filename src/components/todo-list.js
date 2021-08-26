@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function TodoList() {
+export default function TodoList({ todos, onDelete }) {
   const classes = useStyles();
   // User for rendering secondary text
 
@@ -43,7 +43,7 @@ export default function TodoList() {
 
       <>
         <List>
-          <Todos />
+          <Todos todos={todos} onDelete={onDelete} />
         </List>
       </>
     </Container>

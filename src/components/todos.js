@@ -2,19 +2,8 @@ import React from "react";
 import { ListItemIcon, ListItemText, ListItem } from "@material-ui/core";
 import RadioButtonUnchecked from "@material-ui/icons/RadioButtonUnchecked";
 import { makeStyles } from "@material-ui/core/styles";
-
-const tasks = [
-  {
-    id: 0,
-    primary: "something",
-    secondary: "something a bit longer",
-  },
-  {
-    id: 2,
-    primary: "MORE",
-    secondary: "More about this topic",
-  },
-];
+import DeleteSharp from "@material-ui/icons/Delete";
+import { IconButton } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -24,24 +13,35 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Todos() {
+export default function Todos({ todos, onDelete }) {
   const classes = useStyles();
 
   return (
     <>
-      {tasks.map(todo => (
+      {todos.map(todo => (
         <ListItem key={todo.id}>
           <ListItemIcon>
-            <RadioButtonUnchecked />
+            <IconButton>
+              <RadioButtonUnchecked />
+            </IconButton>
           </ListItemIcon>
+
           <ListItemText
             classes={
               ({ primary: classes.listItemText },
               { secondary: classes.listItemText })
             }
-            primary={todo.primary}
-            secondary={todo.secondary}
+            primary={todo.title}
+            secondary={todo.description}
           />
+          <IconButton
+            justify="center"
+            aria-label="delete item"
+            onClick={() => onDelete(todo.id)}
+            // onClick={handleClickOpen}
+          >
+            <DeleteSharp size="small" />
+          </IconButton>
         </ListItem>
       ))}
     </>
