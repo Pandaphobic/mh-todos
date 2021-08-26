@@ -9,6 +9,9 @@ const theme = createTheme({
   palette: {
     type: "dark",
   },
+  typography: {
+    fontFamily: "Rajdhani",
+  },
 });
 
 ReactDOM.render(

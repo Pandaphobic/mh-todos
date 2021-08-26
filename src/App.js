@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <Container maxWidth="sm">
-        <TodoList></TodoList>
+        <TodoList />
       </Container>
     </div>
   );

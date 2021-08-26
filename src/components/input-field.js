@@ -5,9 +5,15 @@ import TextField from "@material-ui/core/TextField";
 const useStyles = makeStyles(() => ({
   root: {
     "& > *": {
-      margin: "2em",
+      marginTop: "1.5em",
+      marginLeft: "2em",
+      marginRight: "2em",
+      marginBottom: "1em",
       width: "85%",
     },
+  },
+  textField: {
+    fontFamily: "Rajdhani",
   },
 }));
 
@@ -16,7 +22,12 @@ export default function BasicTextFields() {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField color="secondary" id="standard-basic" label="Title" />
+      <TextField
+        className={classes.textField}
+        color="secondary"
+        id="standard-basic"
+        label="Title"
+      />
       <TextField color="secondary" id="standard-basic" label="Description" />
     </form>
   );

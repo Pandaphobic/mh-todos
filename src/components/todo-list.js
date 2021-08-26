@@ -1,11 +1,8 @@
 import React from "react";
+// MATERIAL UI
 import { makeStyles } from "@material-ui/core/styles";
-import RadioButtonChecked from "@material-ui/icons/RadioButtonChecked";
 import RadioButtonUnchecked from "@material-ui/icons/RadioButtonUnchecked";
-import AddIcon from "@material-ui/icons/Add";
-import IconButton from "@material-ui/core/IconButton";
-import logo from "../assets/logo.svg";
-import SimpleDialogDemo from "./modal";
+
 import {
   Container,
   List,
@@ -16,17 +13,14 @@ import {
   Grid,
 } from "@material-ui/core";
 
+// COMPONENTS
+import TodoDialog from "./modal";
+
 const useStyles = makeStyles(theme => ({
-  palette: {
-    type: "dark",
-  },
   title: {
     margin: theme.spacing(4, 0, 2),
     fontFamily: "Rajdhani",
     fontWeight: 600,
-  },
-  listItemText: {
-    fontFamily: "Rajdhani",
   },
 }));
 
@@ -37,14 +31,6 @@ const items = {
   item4: ["primary text", "secondary text"],
   item5: ["primary text", "secondary text"],
 };
-
-function generate(element) {
-  return [0, 1, 2].map(value =>
-    React.cloneElement(element, {
-      key: value,
-    })
-  );
-}
 
 export default function TodoList() {
   const classes = useStyles();
@@ -61,14 +47,14 @@ export default function TodoList() {
         justify="center"
       >
         <Grid align="left" item xs={9}>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h5" className={classes.title}>
             Todo List
           </Typography>
         </Grid>
 
         <Grid align="left" item xs={3}>
           <Typography variant="h6" className={classes.title}>
-            <SimpleDialogDemo />
+            <TodoDialog />
           </Typography>
         </Grid>
       </Grid>
@@ -77,7 +63,7 @@ export default function TodoList() {
         <List>
           <ListItem>
             <ListItemIcon>
-              <RadioButtonChecked />
+              <RadioButtonUnchecked />
             </ListItemIcon>
             <ListItemText
               classes={

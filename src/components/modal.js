@@ -1,29 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Avatar from "@material-ui/core/Avatar";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemText from "@material-ui/core/ListItemText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Dialog from "@material-ui/core/Dialog";
-import PersonIcon from "@material-ui/icons/Person";
+import {
+  List,
+  ListItem,
+  ListItemText,
+  DialogTitle,
+  Dialog,
+  Typography,
+} from "@material-ui/core/";
 import AddIcon from "@material-ui/icons/Add";
-import Typography from "@material-ui/core/Typography";
-import { blue } from "@material-ui/core/colors";
 import IconButton from "@material-ui/core/IconButton";
-import BasicTextFields from "./input-field";
-const emails = ["username@gmail.com", "user02@gmail.com"];
-const useStyles = makeStyles({
-  avatar: {
-    backgroundColor: blue[100],
-    color: blue[600],
-  },
-});
+import { makeStyles } from "@material-ui/core/styles";
 
-function SimpleDialog(props) {
+// COMPONENTS
+import BasicTextFields from "./input-field";
+
+const useStyles = makeStyles(theme => ({
+  palette: {
+    type: "dark",
+  },
+  modalTitle: {
+    fontFamily: "Rajdhani",
+    fontWeight: 600,
+  },
+}));
+
+function Modal(props) {
   const classes = useStyles();
   const { onClose, selectedValue, open } = props;
 
@@ -36,13 +38,13 @@ function SimpleDialog(props) {
   };
 
   return (
-    <Dialog
-      onClose={handleClose}
-      aria-labelledby="simple-dialog-title"
-      open={open}
-    >
+    <Dialog onClose={handleClose} aria-labelledby="add-todo-title" open={open}>
       <List>
-        <DialogTitle id="simple-dialog-title">Add New Todo Item</DialogTitle>
+        <DialogTitle id="add-todo-title">
+          <Typography variant="h5" className={classes.modalTitle}>
+            Add New Todo Item
+          </Typography>
+        </DialogTitle>
         <BasicTextFields />
         <ListItem
           autoFocus
@@ -57,15 +59,14 @@ function SimpleDialog(props) {
   );
 }
 
-SimpleDialog.propTypes = {
+Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   selectedValue: PropTypes.string.isRequired,
 };
 
-export default function SimpleDialogDemo() {
+export default function TodoDialog() {
   const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -73,14 +74,10 @@ export default function SimpleDialogDemo() {
 
   const handleClose = value => {
     setOpen(false);
-    setSelectedValue(value);
   };
 
   return (
     <div>
-      {/* <Typography variant="subtitle1">Selected: {selectedValue}</Typography>
-      <br /> */}
-
       <IconButton
         justify="center"
         aria-label="add item"
@@ -88,8 +85,8 @@ export default function SimpleDialogDemo() {
       >
         <AddIcon />
       </IconButton>
-      <SimpleDialog
-        selectedValue={selectedValue}
+      <Modal
+        // selectedValue={selectedValue}
         open={open}
         onClose={handleClose}
       />
