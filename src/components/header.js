@@ -1,11 +1,7 @@
 import React from "react";
-// MATERIAL UI
+import { Typography, Grid } from "@material-ui/core";
+import TodoDialog from "./todoModal";
 import { makeStyles } from "@material-ui/core/styles";
-import Todos from "./todos";
-import { Container, List, Typography, Grid } from "@material-ui/core";
-
-// COMPONENTS
-import TodoDialog from "./modal";
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -14,13 +10,11 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
   },
 }));
-
-export default function TodoList({ todos, onDelete }) {
+export default function Header(onAddTodo) {
   const classes = useStyles();
-  // User for rendering secondary text
 
   return (
-    <Container maxWidth="sm">
+    <>
       <Grid
         container
         spacing={3}
@@ -34,18 +28,12 @@ export default function TodoList({ todos, onDelete }) {
           </Typography>
         </Grid>
 
-        <Grid align="left" item xs={3}>
+        <Grid align="right" item xs={3}>
           <Typography variant="h6" className={classes.title}>
-            <TodoDialog />
+            <TodoDialog onAddTodo />
           </Typography>
         </Grid>
       </Grid>
-
-      <>
-        <List>
-          <Todos todos={todos} onDelete={onDelete} />
-        </List>
-      </>
-    </Container>
+    </>
   );
 }

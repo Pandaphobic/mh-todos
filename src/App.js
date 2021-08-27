@@ -1,7 +1,8 @@
 import "./App.css";
-import { Container } from "@material-ui/core";
-import TodoList from "./components/todo-list";
 import { useState } from "react";
+import Todos from "./components/todos";
+import Header from "./components/header";
+import { Container, List } from "@material-ui/core";
 
 function App() {
   // App Level State for Todo items
@@ -23,14 +24,25 @@ function App() {
     },
   ]);
 
-  const deleteTask = id => {
+  const deleteTodo = id => {
     setTodos(todos.filter(todo => todo.id !== id));
+  };
+
+  const addTodo = todo => {
+    console.log(todo);
   };
 
   return (
     <div className="App">
       <Container maxWidth="sm">
-        <TodoList todos={todos} onDelete={deleteTask} />
+        <Header onAddTodo={addTodo} />
+        <List>
+          {todos.length > 0 ? (
+            <Todos todos={todos} onDelete={deleteTodo} />
+          ) : (
+            "No Todos Set"
+          )}
+        </List>
       </Container>
     </div>
   );
