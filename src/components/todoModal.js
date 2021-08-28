@@ -49,10 +49,8 @@ function Modal({ onClose, selectedValue, open, onAddTodo }) {
   }
 
   const addBtnClicked = () => {
-    // console.log(todoTitle)
-    // console.log(todoDesc)
-    // console.log(newTodo)
     onAddTodo(newTodo)
+    onClose(selectedValue)
   }
 
   return (
